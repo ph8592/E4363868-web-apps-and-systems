@@ -62,6 +62,12 @@ namespace EmployeeManager
             return true;
         }
 
+        /// <summary>
+        /// Oportunity 1 : consider using a regular expression
+        /// Opportunity 2: it could and maybe shoul be ts own type investigare the c# record
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static bool IsValidID(string id)
         {
             if (id.Length != 3 ||
