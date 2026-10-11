@@ -95,7 +95,11 @@ Console.WriteLine($"Oldest Year Published: {oldestBookYear}");
 var newestBookYear = books.Max(b => b.PublishedYear); // extract year as part of max
 Console.WriteLine($"Most Recent Year Published: {newestBookYear}");
 
-
+Console.WriteLine("\nJ.R.R. Tolkien earliest-published book");
+var tolkienFirstBook = books.Where(b => b.Author == "J.R.R. Tolkien") // Filter by author
+.OrderBy(b => b.PublishedYear) // sort by year published
+.FirstOrDefault(); // get first book from list
+Console.WriteLine(tolkienFirstBook);
 
 // up to step 14 pg 10
 
