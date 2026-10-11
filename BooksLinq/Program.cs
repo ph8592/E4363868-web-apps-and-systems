@@ -64,5 +64,9 @@ Console.WriteLine("\nTolkien Or Coelho Books");
 var tolkienOrCoelhoBooks = books.Where(b => b.Author == "J.R.R. Tolkien" || b.Author == "Paulo Coelho").ToList();
 DisplayBookList(tolkienOrCoelhoBooks);
 
+Console.WriteLine("\nBooks with IS in the title");
+var isBooks = books.Where(b => b.Title.Contains("is", StringComparison.CurrentCultureIgnoreCase)).ToList();
+DisplayBookList(isBooks);
+
 // up to step 14 pg 10
 
