@@ -127,5 +127,9 @@ var booksByPublisher = books.Where(b => b.Publisher == "George Allen & Unwin")
     .ToList();
 DisplayBookList(booksByPublisher);
 
+Console.WriteLine("\nBooks which are either classics or have a page count more than 500 pages");
+var classicOrLargeBooks = books.Where(b => b.IsClassic || b.PageCount > 500).ToList();
+DisplayBookList(classicOrLargeBooks);
+
 // up to step 14 pg 10
 
