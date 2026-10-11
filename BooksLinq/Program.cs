@@ -72,5 +72,10 @@ Console.WriteLine("\nBooks with a page count between 450 and 1000 (inclusive)");
 var mediumSizeBooks = books.Where(b => b.PageCount >= 450 && b.PageCount <= 1000).ToList();
 DisplayBookList(mediumSizeBooks);
 
+Console.WriteLine("\nBooks in the Autobiography and Romance Genres");
+var genreFilterList = new List<string> { "Autobiography", "Romance" };
+var genreFilteredBooks = books.Where(b => genreFilterList.Contains(b.Genre)).ToList();
+DisplayBookList(genreFilteredBooks);
+
 // up to step 14 pg 10
 
