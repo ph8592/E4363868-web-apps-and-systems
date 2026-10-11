@@ -24,12 +24,12 @@ namespace BankApp
                 Console.WriteLine("Please enter the sort code (6 digits):");
                 sortCode = Console.ReadLine() ?? "";
 
-                if (!Regex.IsMatch(sortCode, @"\A[0-9]{6}\z"))
+                if (!PremiumAccount.isValidSortCode(sortCode))
                 {
                     Console.WriteLine("Sort code must contain exactly 6 digits.");
                 }
             }
-            while (!Regex.IsMatch(sortCode, @"\A[0-9]{6}\z"));
+            while (!PremiumAccount.isValidSortCode(sortCode));
 
             string accountNumber;
 
@@ -38,12 +38,12 @@ namespace BankApp
                 Console.WriteLine("Please enter the account number (8 digits):");
                 accountNumber = Console.ReadLine() ?? "";
 
-                if (!Regex.IsMatch(accountNumber, @"\A[0-9]{8}\z"))
+                if (!PremiumAccount.isValidAccountNumber(accountNumber))
                 {
                     Console.WriteLine("Account number must contain exactly 8 digits.");
                 }
             }
-            while (!Regex.IsMatch(accountNumber, @"\A[0-9]{8}\z"));
+            while (!PremiumAccount.isValidAccountNumber(accountNumber));
 
             Customer = new PremiumAccount(customerName, sortCode, accountNumber);
 
@@ -57,9 +57,9 @@ namespace BankApp
             {
                 Console.WriteLine("Please enter the initial deposit amount:");
                 string input = Console.ReadLine() ?? "";
-                if (!decimal.TryParse(input, out initialDeposit) || initialDeposit < 0)
+                if (!decimal.TryParse(input, out initialDeposit) || !PremiumAccount.isValidInitialDeposit(initialDeposit))
                 {
-                    Console.WriteLine("Invalid input. Please enter a positive number");
+                    Console.WriteLine("Invalid input. Please enter a valid initial deposit amount.");
                 }
                 else
                 {

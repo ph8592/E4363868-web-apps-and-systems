@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BankApp
 {
@@ -31,7 +32,7 @@ namespace BankApp
         }
 
         // Method to process a transaction - allows for refunds
-            public bool ProcessTransaction(decimal transactionAmount)
+        public bool ProcessTransaction(decimal transactionAmount)
         {
             if (transactionAmount > DailyTransactionLimit)
             {
@@ -46,6 +47,23 @@ namespace BankApp
             Balance -= transactionAmount;
             Console.WriteLine($"Transaction successful: Your new balance is {Balance:C2}.");
             return true;
+        }
+
+        // Methods for validation
+        static public bool isValidSortCode(string sortCode)
+        {
+            return Regex.IsMatch(sortCode, @"\A[0-9]{6}\z");
+        }
+
+        static public bool isValidAccountNumber(string accountNumber)
+        {
+            return Regex.IsMatch(accountNumber, @"\A[0-9]{8}\z");
+        }
+
+        static public bool isValidInitialDeposit(decimal initialDeposit)
+        {
+            return initialDeposit > 0
+                && initialDeposit <= 10000.00m;
         }
     }
 }
