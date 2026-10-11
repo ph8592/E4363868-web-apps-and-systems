@@ -81,7 +81,9 @@ Console.WriteLine("\nBooks sorted by Genre");
 var booksSortedByGenre = books.OrderBy(b => b.Genre).ToList();
 DisplayBookList(booksSortedByGenre);
 
-
+Console.WriteLine("\nBooks sorted by Genre and Title");
+var booksSortedByGenreAndTitle = books.OrderBy(b => b.Genre).ThenBy(b => b.Title).ToList();
+DisplayBookList(booksSortedByGenreAndTitle);
 
 // up to step 14 pg 10
 
