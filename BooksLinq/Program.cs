@@ -56,5 +56,9 @@ books.AddRange(new List<Book>
 
 DisplayBookList(books);
 
+Console.WriteLine("\nTolkien Books");
+var tolkienBooks = books.Where(b => b.Author == "J.R.R. Tolkien").ToList();
+DisplayBookList(tolkienBooks);
+
 // up to step 14 pg 10
 
