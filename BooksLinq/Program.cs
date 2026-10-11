@@ -68,5 +68,9 @@ Console.WriteLine("\nBooks with IS in the title");
 var isBooks = books.Where(b => b.Title.Contains("is", StringComparison.CurrentCultureIgnoreCase)).ToList();
 DisplayBookList(isBooks);
 
+Console.WriteLine("\nBooks with a page count between 450 and 1000 (inclusive)");
+var mediumSizeBooks = books.Where(b => b.PageCount >= 450 && b.PageCount <= 1000).ToList();
+DisplayBookList(mediumSizeBooks);
+
 // up to step 14 pg 10
 
