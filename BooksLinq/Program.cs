@@ -89,5 +89,13 @@ Console.WriteLine("\nBooks sorted by Year Published (latest first) and Title");
 var booksSortedByYearAndTitle = books.OrderByDescending(b => b.PublishedYear).ThenBy(b => b.Title).ToList();
 DisplayBookList(booksSortedByYearAndTitle);
 
+Console.WriteLine("\nOldest and newest book - Year Published");
+var oldestBookYear = books.Select(b => b.PublishedYear).Min(); // extract years and then find minimum
+Console.WriteLine($"Oldest Year Published: {oldestBookYear}");
+var newestBookYear = books.Max(b => b.PublishedYear); // extract year as part of max
+Console.WriteLine($"Most Recent Year Published: {newestBookYear}");
+
+
+
 // up to step 14 pg 10
 
