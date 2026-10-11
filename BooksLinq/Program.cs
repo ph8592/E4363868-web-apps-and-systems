@@ -135,6 +135,19 @@ Console.WriteLine("\nCheck if there are any non-classic books with a page count 
 var anyNonClassicLargeBooks = books.Where(b => !b.IsClassic && b.PageCount > 500).ToList();
 DisplayBookList(anyNonClassicLargeBooks); // There isn't
 
+Console.WriteLine("\nAverage page count of books in each genre");
+var averagePageCountByGenre = books.GroupBy(b => b.Genre)
+    .Select(g => new
+    {
+        Genre = g.Key,
+        AveragePageCount = g.Average(b => b.PageCount)
+    })
+    .ToList();
+foreach (var genre in averagePageCountByGenre)
+{
+    Console.WriteLine($"{genre.Genre}: {genre.AveragePageCount:F1} pages");
+}
+
 
 
 
