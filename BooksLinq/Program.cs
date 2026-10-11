@@ -121,5 +121,11 @@ Console.WriteLine("\nBooks which are not classics and were published after 1950"
 var nonClassicBooks = books.Where(b => !b.IsClassic && b.PublishedYear > 1950).ToList();
 DisplayBookList(nonClassicBooks);
 
+Console.WriteLine("\nBooks published by George Allen & Unwin, ordered by page count");
+var booksByPublisher = books.Where(b => b.Publisher == "George Allen & Unwin")
+    .OrderBy(b => b.PageCount)
+    .ToList();
+DisplayBookList(booksByPublisher);
+
 // up to step 14 pg 10
 
