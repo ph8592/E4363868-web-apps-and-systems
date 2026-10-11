@@ -77,5 +77,11 @@ var genreFilterList = new List<string> { "Autobiography", "Romance" };
 var genreFilteredBooks = books.Where(b => genreFilterList.Contains(b.Genre)).ToList();
 DisplayBookList(genreFilteredBooks);
 
+Console.WriteLine("\nBooks sorted by Genre");
+var booksSortedByGenre = books.OrderBy(b => b.Genre).ToList();
+DisplayBookList(booksSortedByGenre);
+
+
+
 // up to step 14 pg 10
 
