@@ -101,5 +101,17 @@ var tolkienFirstBook = books.Where(b => b.Author == "J.R.R. Tolkien") // Filter 
 .FirstOrDefault(); // get first book from list
 Console.WriteLine(tolkienFirstBook);
 
+Console.WriteLine("\nBook Count for each Genre");
+var genreCounts = books.GroupBy(b => b.Genre) // Create a subset of records for each genre
+.OrderBy(g => g.Key) // Optional: Sort by genre [key]
+.Select(g => new { // Create an anonymous record with:
+    Genre = g.Key, // - Genre [the group key]
+    Count = g.Count() // - A count of the subset of Genre records
+}).ToList();
+foreach (var gc in genreCounts)
+{
+    Console.WriteLine($"{gc.Genre}: {gc.Count}");
+}
+
 // up to step 14 pg 10
 
