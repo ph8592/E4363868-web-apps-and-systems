@@ -148,6 +148,19 @@ foreach (var genre in averagePageCountByGenre)
     Console.WriteLine($"{genre.Genre}: {genre.AveragePageCount:F1} pages");
 }
 
+Console.WriteLine("\nLongest book in each genre");
+var longestBookByGenre = books.GroupBy(b => b.Genre)
+    .Select(g => new
+    {
+        Genre = g.Key,
+        LongestBook = g.OrderByDescending(b => b.PageCount).FirstOrDefault()
+    })
+    .ToList();
+foreach (var genre in longestBookByGenre)
+{
+    Console.WriteLine($"{genre.Genre}: {genre.LongestBook.Title} ({genre.LongestBook.PageCount} pages)");
+}
+
 
 
 
