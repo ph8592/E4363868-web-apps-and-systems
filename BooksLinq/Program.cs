@@ -131,5 +131,12 @@ Console.WriteLine("\nBooks which are either classics or have a page count more t
 var classicOrLargeBooks = books.Where(b => b.IsClassic || b.PageCount > 500).ToList();
 DisplayBookList(classicOrLargeBooks);
 
+Console.WriteLine("\nCheck if there are any non-classic books with a page count more than 500 pages");
+var anyNonClassicLargeBooks = books.Where(b => !b.IsClassic && b.PageCount > 500).ToList();
+DisplayBookList(anyNonClassicLargeBooks); // There isn't
+
+
+
+
 // up to step 14 pg 10
 
