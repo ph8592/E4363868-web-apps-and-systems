@@ -60,5 +60,9 @@ Console.WriteLine("\nTolkien Books");
 var tolkienBooks = books.Where(b => b.Author == "J.R.R. Tolkien").ToList();
 DisplayBookList(tolkienBooks);
 
+Console.WriteLine("\nTolkien Or Coelho Books");
+var tolkienOrCoelhoBooks = books.Where(b => b.Author == "J.R.R. Tolkien" || b.Author == "Paulo Coelho").ToList();
+DisplayBookList(tolkienOrCoelhoBooks);
+
 // up to step 14 pg 10
 
