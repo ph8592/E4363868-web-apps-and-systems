@@ -23,5 +23,10 @@ namespace StudentList
             Mark = mark;
             EnrolmentYear = enrolmentYear;
         }
+
+        public override string ToString()
+        {
+            return $"Name: {Forename} {Surname}, Age: {Age}, Course: {Course}, Mark: {Mark}, Enrolment Year: {EnrolmentYear}";
+        }
     }
 }
