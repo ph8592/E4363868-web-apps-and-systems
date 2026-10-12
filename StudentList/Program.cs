@@ -2,6 +2,7 @@
 
 Console.WriteLine("Student List App");
 
+#region Instantiate Student List
 List<Student> studentList = new List<Student>();
 
 studentList.AddRange(
@@ -22,8 +23,14 @@ studentList.AddRange(
     new Student("Noah", "Martin", 23, "Chemistry", 76.0, 2022),
     new Student("Olivia", "Thompson", 20, "Biology", 93.0, 2020)
     );
+#endregion
 
-foreach (var student in studentList)
+DisplayStudentList(studentList);
+
+static void DisplayStudentList(List<Student> studentList)
 {
-    Console.WriteLine(student.ToString());
-} 
+    foreach (var student in studentList)
+    {
+        Console.WriteLine(student.ToString());
+    }
+}
