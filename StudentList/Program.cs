@@ -78,6 +78,15 @@ var studentsWithMarksBetween70And85 = studentList
     .ToList();
 DisplayStudentList(studentsWithMarksBetween70And85);
 
+Console.WriteLine("\nStudents older than 21, sorted by mark (descending order)");
+var studentsOlderThan21 = studentList
+    .Where(s => s.Age > 21)
+    .OrderByDescending(s => s.Mark)
+    .ToList();
+DisplayStudentList(studentsOlderThan21);
+
+
+
 #region Local Functions
 static void DisplayStudentList(List<Student> studentList)
 {
