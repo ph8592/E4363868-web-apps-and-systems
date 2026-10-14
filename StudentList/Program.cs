@@ -2,7 +2,7 @@
 
 Console.WriteLine("Student List App");
 
-#region Instantiate Student List
+#region Initialise Student List
 List<Student> studentList = new List<Student>();
 
 studentList.AddRange(
@@ -27,6 +27,35 @@ studentList.AddRange(
 
 DisplayStudentList(studentList);
 
+Console.WriteLine("\nFilter by course and sort by mark");
+var filteredAndSortedStudents = studentList
+    .Where(s => s.Course == "Computer Science")
+    .OrderByDescending(s => s.Mark)
+    .ToList();
+DisplayStudentList(filteredAndSortedStudents);
+
+Console.WriteLine("\nStudents who enrolled after 2020");
+var enrolledAfter2020 = studentList
+    .Where(s => s.EnrolmentYear > 2020)
+    .OrderBy<Student, int>(s => s.EnrolmentYear)
+    .ToList();
+DisplayStudentList(enrolledAfter2020);
+
+Console.WriteLine("\nAverage mark by course");
+var averageMarkByCourse = studentList
+    .GroupBy(s => s.Course)
+    .Select(g => new { Course = g.Key, AverageMark = g.Average(s => s.Mark) })
+    .ToList();
+foreach(var item in averageMarkByCourse)
+{
+    Console.WriteLine($"Course: {item.Course}, Average Mark: {item.AverageMark:F2}");
+}
+
+
+
+
+
+#region Local Functions
 static void DisplayStudentList(List<Student> studentList)
 {
     foreach (var student in studentList)
@@ -34,3 +63,4 @@ static void DisplayStudentList(List<Student> studentList)
         Console.WriteLine(student.ToString());
     }
 }
+#endregion
