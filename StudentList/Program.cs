@@ -106,6 +106,16 @@ foreach (var student in transformedStudents)
     Console.WriteLine($"Full Name: {student.FullName}, Course: {student.Course}, Mark Above 80: {student.MarkAbove80}");
 }
 
+Console.WriteLine("\nTotal number of students, average age, and highest mark");
+var totalStudents = studentList.Count;
+var averageAge = studentList.Average(s => s.Age);
+var highestMark = studentList.Max(s => s.Mark);
+
+Console.WriteLine($"Total Students: {totalStudents}");
+Console.WriteLine($"Average Age: {averageAge:F2}");
+Console.WriteLine($"Highest Mark: {highestMark}");
+
+
 #region Local Functions
 static void DisplayStudentList(List<Student> studentList)
 {
