@@ -71,7 +71,12 @@ foreach(var item in studentCountByEnrolmentYear)
     Console.WriteLine($"Enrolment Year: {item.EnrolmentYear}, Student Count: {item.StudentCount}");
 }
 
-
+Console.WriteLine("\nStudents with marks between 70 and 85 (ascending order)");
+var studentsWithMarksBetween70And85 = studentList
+    .Where(s => s.Mark >= 70 && s.Mark <= 85)
+    .OrderBy(s => s.Mark)
+    .ToList();
+DisplayStudentList(studentsWithMarksBetween70And85);
 
 #region Local Functions
 static void DisplayStudentList(List<Student> studentList)
