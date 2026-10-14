@@ -51,7 +51,15 @@ foreach(var item in averageMarkByCourse)
     Console.WriteLine($"Course: {item.Course}, Average Mark: {item.AverageMark:F2}");
 }
 
-
+Console.WriteLine("\nYoungest student in each course");
+var youngestStudentByCourse = studentList
+    .GroupBy(s => s.Course)
+    .Select(g => new { Course = g.Key, YoungestStudent = g.Min() })
+    .ToList();
+foreach(var item in youngestStudentByCourse)
+{
+    Console.WriteLine($"Course: {item.Course}, Youngest Student: {item.YoungestStudent}");
+}
 
 
 
