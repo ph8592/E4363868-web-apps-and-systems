@@ -85,7 +85,12 @@ var studentsOlderThan21 = studentList
     .ToList();
 DisplayStudentList(studentsOlderThan21);
 
-
+Console.WriteLine("\nTop 3 students with the highest marks");
+var top3Students = studentList
+    .OrderByDescending(s => s.Mark)
+    .Take(3)
+    .ToList();
+DisplayStudentList(top3Students);
 
 #region Local Functions
 static void DisplayStudentList(List<Student> studentList)
