@@ -54,21 +54,16 @@ foreach(var item in averageMarkByCourse)
 Console.WriteLine("\nYoungest student in each course");
 var youngestStudentByCourse = studentList
     .GroupBy(s => s.Course)
-    .Select(g => new { Course = g.Key, YoungestStudent = g.Min() })
+    .Select(g => new
+    {
+        Course = g.Key,
+        YoungestStudent = g.OrderBy(s => s.Age).First()
+    })
     .ToList();
-foreach(var item in youngestStudentByCourse)
-{
-    Console.WriteLine($"Course: {item.Course}, Youngest Student: {item.YoungestStudent}");
-}
 
-Console.WriteLine("\nNumber of students in each enrolment year");
-var studentCountByEnrolmentYear = studentList
-    .GroupBy(s => s.EnrolmentYear)
-    .Select(g => new { EnrolmentYear = g.Key, StudentCount = g.Count() })
-    .ToList();
-foreach(var item in studentCountByEnrolmentYear)
+foreach (var item in youngestStudentByCourse)
 {
-    Console.WriteLine($"Enrolment Year: {item.EnrolmentYear}, Student Count: {item.StudentCount}");
+    Console.WriteLine($"Course: {item.Course}, Youngest Student: {item.YoungestStudent.Forename} {item.YoungestStudent.Surname}, Age: {item.YoungestStudent.Age}");
 }
 
 Console.WriteLine("\nStudents with marks between 70 and 85 (ascending order)");
