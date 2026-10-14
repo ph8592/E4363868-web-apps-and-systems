@@ -61,6 +61,16 @@ foreach(var item in youngestStudentByCourse)
     Console.WriteLine($"Course: {item.Course}, Youngest Student: {item.YoungestStudent}");
 }
 
+Console.WriteLine("\nNumber of students in each enrolment year");
+var studentCountByEnrolmentYear = studentList
+    .GroupBy(s => s.EnrolmentYear)
+    .Select(g => new { EnrolmentYear = g.Key, StudentCount = g.Count() })
+    .ToList();
+foreach(var item in studentCountByEnrolmentYear)
+{
+    Console.WriteLine($"Enrolment Year: {item.EnrolmentYear}, Student Count: {item.StudentCount}");
+}
+
 
 
 #region Local Functions
