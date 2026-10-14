@@ -92,6 +92,20 @@ var top3Students = studentList
     .ToList();
 DisplayStudentList(top3Students);
 
+Console.WriteLine("\nSelecting and transforming data");
+var transformedStudents = studentList
+    .Select(s => new
+    {
+        FullName = $"{s.Forename} {s.Surname}",
+        Course = s.Course,
+        MarkAbove80 = s.Mark > 80
+    })
+    .ToList();
+foreach (var student in transformedStudents)
+{ 
+    Console.WriteLine($"Full Name: {student.FullName}, Course: {student.Course}, Mark Above 80: {student.MarkAbove80}");
+}
+
 #region Local Functions
 static void DisplayStudentList(List<Student> studentList)
 {
