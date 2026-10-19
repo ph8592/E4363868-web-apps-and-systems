@@ -17,5 +17,12 @@ namespace CarSalesApp.Data
         }
 
         public DbSet<Car> Cars => Set<Car>();
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.UseSqlite($"Data Source={DbPath}");
+        }
     }
 }
