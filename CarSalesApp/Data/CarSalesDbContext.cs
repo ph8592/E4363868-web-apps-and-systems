@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarSalesApp.Data
 {
-    public class CarSalesDbContext: DbContext
+    public class CarSalesDbContext : DbContext
     {
         public string DbPath { get; }
 
@@ -24,5 +24,54 @@ namespace CarSalesApp.Data
 
             optionsBuilder.UseSqlite($"Data Source={DbPath}");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Car>().HasData(
+            new Car(1, "Polo", "Volkswagen", 2013, Fuel.PETROL, 4795,
+            DateOnly.Parse("2022-07-10"), true),
+            new Car(2, "Fiesta", "Ford", 2017, Fuel.PETROL, 9597,
+            DateOnly.Parse("2022-07-13"), false),
+            new Car(3, "1 Series", "BMW", 2016, Fuel.DIESEL, 11749,
+            DateOnly.Parse("2022-07-19"), true),
+            new Car(4, "2 Series", "BMW", 2017, Fuel.HYBRID, 18989,
+            DateOnly.Parse("2022-07-21"), true),
+            new Car(5, "Prius", "Toyota", 2014, Fuel.HYBRID, 13490,
+            DateOnly.Parse("2022-07-21"), true),
+            new Car(6, "Focus", "Ford", 2015, Fuel.DIESEL, 3995,
+            DateOnly.Parse("2022-07-25"), false),
+            new Car(7, "Golf", "Volkswagen", 2018, Fuel.ELECTRIC, 21000,
+            DateOnly.Parse("2022-07-30"), true),
+            new Car(8, "Yaris", "Toyota", 2021, Fuel.HYBRID, 18990,
+            DateOnly.Parse("2022-08-01"), false),
+            new Car(9, "i3", "BMW", 2014, Fuel.ELECTRIC, 14990,
+            DateOnly.Parse("2022-08-01"), false),
+            new Car(10, "RAV4", "Toyota", 2018, Fuel.HYBRID, 18495,
+            DateOnly.Parse("2022-08-03"), true),
+            new Car(11, "3 Series", "BMW", 2017, Fuel.HYBRID, 15000,
+            DateOnly.Parse("2022-08-07"), true),
+            new Car(12, "Focus", "Ford", 2014, Fuel.DIESEL, 4995,
+            DateOnly.Parse("2022-08-08"), false),
+            new Car(13, "1 Series", "BMW", 2018, Fuel.PETROL, 17250,
+            DateOnly.Parse("2022-08-10"), true),
+            new Car(14, "Fiesta", "Ford", 2015, Fuel.PETROL, 5400,
+            DateOnly.Parse("2022-08-15"), true),
+            new Car(15, "Z4", "BMW", 2014, Fuel.PETROL, 8990,
+            DateOnly.Parse("2022-08-20"), false),
+            new Car(16, "4 Series", "BMW", 2015, Fuel.DIESEL, 16990,
+            DateOnly.Parse("2022-08-27"), true),
+            new Car(17, "Zoe", "Renault", 2014, Fuel.ELECTRIC, 8995,
+            DateOnly.Parse("2022-09-02"), true),
+            new Car(18, "Fiesta", "Ford", 2016, Fuel.PETROL, 9380,
+            DateOnly.Parse("2022-09-05"), false),
+            new Car(19, "3 Series", "BMW", 2014, Fuel.PETROL, 11595,
+            DateOnly.Parse("2022-09-07"), false),
+            new Car(20, "Focus", "Ford", 2017, Fuel.PETROL, 8495,
+            DateOnly.Parse("2022-09-10"), false)
+            );
+        }
+
     }
 }
