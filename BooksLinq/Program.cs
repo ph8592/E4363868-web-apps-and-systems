@@ -11,6 +11,8 @@ static void DisplayBookList(List<Book> bookList)
 
 Console.WriteLine("Book List LINQ\n");
 
+#region book program from week 2
+
 #region adding books to a list
 
 //List<Book> books = AddBooks();
@@ -185,3 +187,12 @@ Console.WriteLine("Book List LINQ\n");
 
 //// up to students list pg 21
 
+#endregion
+
+#region Book Database from week 4
+using var db = new BooksLinqDbContext();
+
+var books = db.Books.ToList();
+
+DisplayBookList(books);
+#endregion
