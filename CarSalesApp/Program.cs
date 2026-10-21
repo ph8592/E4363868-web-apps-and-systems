@@ -21,11 +21,12 @@ displayCars(cars);
 //db.SaveChanges();
 
 // load in car with id 7
-var car = db.Cars
-.Where(c => c.Id == 7)
-.SingleOrDefault(); // get a single record or NULL
-Console.WriteLine($"Before change: {car}");
-car.Price = 19500;
-Console.WriteLine($"After change: {car}");
-// Save change to memory objects to the database
-db.SaveChanges();
+//var car = db.Cars
+//.Where(c => c.Id == 7)
+//.SingleOrDefault(); // get a single record or NULL
+//Console.WriteLine($"Before change: {car}");
+//car.Price = 19500;
+//Console.WriteLine($"After change: {car}");
+//// Save change to memory objects to the database
+//db.SaveChanges();
+
