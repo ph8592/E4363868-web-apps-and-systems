@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BooksLinq
+namespace BooksLinq.Data
 {
     public class Book
     {

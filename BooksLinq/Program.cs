@@ -1,4 +1,4 @@
-﻿using BooksLinq;
+﻿using BooksLinq.Data;
 using System.ComponentModel.DataAnnotations;
 
 static void DisplayBookList(List<Book> bookList)
@@ -13,9 +13,9 @@ Console.WriteLine("Book List LINQ\n");
 
 #region adding books to a list
 
-List<Book> books = AddBooks();
+//List<Book> books = AddBooks();
 
-AddMoreBooks(books);
+//AddMoreBooks(books);
 #endregion
 
 DisplayBookList(books);

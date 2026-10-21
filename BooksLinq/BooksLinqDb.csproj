@@ -1,0 +1,72 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{E753B644-24FF-8E73-69FE-0F271302A9C9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>BooksLinqDb</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Book.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BooksLinq.slnx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".vs\BooksLinq.slnx\DesignTimeBuild\.dtbcache.v2" />
+    <None Include=".vs\BooksLinq.slnx\FileContentIndex\40101bc7-03f7-414f-8e7a-4260456ddccc.vsidx" />
+    <None Include=".vs\BooksLinq.slnx\FileContentIndex\4deaa987-4056-4e87-ab7d-50a820816792.vsidx" />
+    <None Include=".vs\BooksLinq.slnx\v18\.futdcache.v2" />
+    <None Include=".vs\BooksLinq.slnx\v18\.suo" />
+    <None Include=".vs\BooksLinq.slnx\v18\DocumentLayout.backup.json" />
+    <None Include=".vs\BooksLinq.slnx\v18\DocumentLayout.json" />
+    <None Include=".vs\BooksLinq\CopilotIndices\18.10.1207.43936\SemanticSymbols.db" />
+    <None Include=".vs\ProjectEvaluation\bookslinq.metadata.v10.bin" />
+    <None Include=".vs\ProjectEvaluation\bookslinq.projects.v10.bin" />
+    <None Include=".vs\ProjectEvaluation\bookslinq.strings.v10.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\BooksLinq.slnx\copilot-chat\6a95abd5\sessions\" />
+    <Folder Include=".vs\BooksLinqDb.slnx\v18\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>
