@@ -9,7 +9,7 @@ namespace AssetsDatabase.Data
     {
         public string DbPath { get; }
 
-        public AssetDatabaseDbContext(string dbPath)
+        public AssetDatabaseDbContext()
         {
             var folder = Environment.SpecialFolder.MyDocuments;
             var path = Environment.GetFolderPath(folder);
