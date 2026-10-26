@@ -15,21 +15,29 @@ var client = new HttpClient
     BaseAddress = new Uri(baseUrl)
 };
 
-HttpResponseMessage response = client.GetAsync("jokes/random").Result;
-
-response.EnsureSuccessStatusCode();
-
-string responseBody = response.Content.ReadAsStringAsync().Result;
-
-var joke = JsonSerializer.Deserialize<Joke>(responseBody, options);
-
-if (joke != null)
+try
 {
-    Console.WriteLine("Here's a joke for you:");
-    Console.WriteLine(joke.Setup);
-    Console.WriteLine(joke.Punchline);
+    HttpResponseMessage response = client.GetAsync("jokes/random").Result;
+
+
+    response.EnsureSuccessStatusCode();
+
+    string responseBody = response.Content.ReadAsStringAsync().Result;
+
+    var joke = JsonSerializer.Deserialize<Joke>(responseBody, options);
+
+    if (joke != null)
+    {
+        Console.WriteLine("Here's a joke for you:");
+        Console.WriteLine(joke.Setup);
+        Console.WriteLine(joke.Punchline);
+    }
+    else
+    {
+        Console.WriteLine("Failed to fetch a joke.");
+    }
 }
-else
+catch (HttpRequestException e)
 {
-    Console.WriteLine("Failed to fetch a joke.");
+    Console.WriteLine($"Request error: {e.Message}");
 }
