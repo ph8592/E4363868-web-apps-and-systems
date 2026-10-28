@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace AdviceSlip.Dtos
 {
+    public class AdviceSearchResponse
+    {
+        public List<Slip> Slips { get; set; } = new();
+    }
     public class AdviceSlipResponse
     {
         [JsonPropertyName("slip")]

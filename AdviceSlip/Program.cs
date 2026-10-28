@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Text.Json;
 using AdviceSlip.Dtos;
@@ -19,7 +20,45 @@ var client = new HttpClient
 
 FetchRandomAdvice(options, client);
 
+var adviceSlips = new List<Slip>();
 
+try
+{
+    using HttpResponseMessage response = await client.GetAsync("advice/search/work");
+
+    response.EnsureSuccessStatusCode();
+
+    string responseBody = await response.Content.ReadAsStringAsync();
+
+    var result = JsonSerializer.Deserialize<AdviceSearchResponse>(
+        responseBody, options);
+
+    if (result?.Slips is { } slips)
+    {
+        adviceSlips.AddRange(slips);
+    }
+}
+catch (HttpRequestException e)
+{
+    Console.WriteLine($"Request error: {e.Message}");
+}
+catch (JsonException e)
+{
+    Console.WriteLine($"Could not read advice: {e.Message}");
+}
+
+Console.WriteLine("\nAdvice related to work:");
+Console.WriteLine("-----------------------");
+
+if (adviceSlips.Count == 0)
+{
+    Console.WriteLine("No advice to display.");
+}
+
+foreach (var advice in adviceSlips)
+{
+    Console.WriteLine($"{advice.SlipId}: {advice.Advice}");
+}
 
 #region Program methods
 static void FetchRandomAdvice(JsonSerializerOptions options, HttpClient client)
