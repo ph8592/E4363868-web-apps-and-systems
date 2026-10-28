@@ -81,3 +81,42 @@ foreach (var joke in jokes)
 }
 
 #endregion
+
+
+#region Exercise 4 - Dad jokes
+// Start with an empty list
+var dadJokes = new List<Joke>();
+try
+{
+    // Send a GET request to the "jokes/{type}/ten" endpoint
+    HttpResponseMessage response = client.GetAsync($"jokes/dad/ten").Result;
+    // Ensure the request was successful
+    response.EnsureSuccessStatusCode();
+    // Read the response content as a string
+    string responseBody = response.Content.ReadAsStringAsync().Result;
+    // Deserialize the JSON response into a list of Joke objects
+    var jokeList = JsonSerializer.Deserialize<List<Joke>>(
+    responseBody, options
+    );
+    // Add the jokes to the list if they are not null
+    if (jokeList != null)
+    {
+        dadJokes.AddRange(jokeList);
+    }
+}
+catch (HttpRequestException e)
+{
+    // Handle any HTTP request errors
+    Console.WriteLine($"Request error: {e.Message}");
+}
+// Display list of jokes
+Console.WriteLine("\n10 dad Jokes - there's actually only 2...");
+Console.WriteLine("-------------");
+foreach (var joke in dadJokes)
+{
+    Console.WriteLine(joke.Setup);
+    Console.WriteLine(joke.Punchline);
+    Console.WriteLine();
+}
+
+#endregion
