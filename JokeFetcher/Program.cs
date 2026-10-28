@@ -82,7 +82,6 @@ foreach (var joke in jokes)
 
 #endregion
 
-
 #region Exercise 4 - Dad jokes
 // Start with an empty list
 var dadJokes = new List<Joke>();
