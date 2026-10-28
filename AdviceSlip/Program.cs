@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text.Json;
 using AdviceSlip.Dtos;
 
+#region Program setup
 const string baseUrl = "https://api.adviceslip.com/";
 
 var options = new JsonSerializerOptions
@@ -14,27 +15,38 @@ var client = new HttpClient
 {
     BaseAddress = new Uri(baseUrl)
 };
+#endregion
 
-try
+FetchRandomAdvice(options, client);
+
+
+
+#region Program methods
+static void FetchRandomAdvice(JsonSerializerOptions options, HttpClient client)
 {
-    HttpResponseMessage response = client.GetAsync("advice").Result;
-
-    response.EnsureSuccessStatusCode();
-
-    string responseBody = response.Content.ReadAsStringAsync().Result;
-
-    var advice = JsonSerializer.Deserialize<AdviceSlipResponse>(responseBody, options);
-
-    if (advice?.Slip is { } slip)
+    try
     {
-        Console.WriteLine($"Advice: {slip.Advice}");
+        HttpResponseMessage response = client.GetAsync("advice").Result;
+
+        response.EnsureSuccessStatusCode();
+
+        string responseBody = response.Content.ReadAsStringAsync().Result;
+
+        var advice = JsonSerializer.Deserialize<AdviceSlipResponse>(responseBody, options);
+
+        if (advice?.Slip is { } slip)
+        {
+            Console.WriteLine($"Advice: {slip.Advice}");
+        }
+        else
+        {
+            Console.WriteLine("Failed to retrieve advice.");
+        }
     }
-    else
+    catch (HttpRequestException e)
     {
-        Console.WriteLine("Failed to retrieve advice.");
+        Console.WriteLine($"Request error: {e.Message}");
     }
 }
-catch (HttpRequestException e)
-{
-    Console.WriteLine($"Request error: {e.Message}");
-}
+
+#endregion
